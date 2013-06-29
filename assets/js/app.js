@@ -21,7 +21,7 @@ $(document).ready(function () {
 
             socket.on("enter response", function (data) {
                 if (data.accepted) {
-                    console.log("ACCEPTED");
+//                    console.log("ACCEPTED");
 
                     entered = true;
 
@@ -35,7 +35,7 @@ $(document).ready(function () {
                         messageInput.focus();
                     }, 500);
                 } else {
-                    console.log("REJECTED: " + data.message);
+//                    console.log("REJECTED: " + data.message);
                     nicknameForm.find(".error").remove();
                     var errorParagraph = $(document.createElement("p")).addClass("error").text(data.message);
                     nicknameForm.append(errorParagraph);
@@ -54,7 +54,7 @@ $(document).ready(function () {
             lenIndicator.text("");
         } else {
             lenIndicator.text(remaining);
-            lenIndicator.attr("class", remaining < 0 ? "bad" : "");
+            lenIndicator.attr("class", "indicator " + (remaining < 0 ? "bad" : ""));
         }
     });
 
@@ -66,6 +66,7 @@ $(document).ready(function () {
         if (message) {
             socket.emit("message", { message: message });
             messageInput.val("");
+            lenIndicator.text("");
             messageForm.find(".error").remove();
         }
     });
@@ -85,7 +86,7 @@ $(document).ready(function () {
 
     // Receive information
     socket.on("info", function (data) {
-        console.log(data);
+//        console.log(data);
         if (entered) {
             addInfo(data);
         }
@@ -121,7 +122,7 @@ $(document).ready(function () {
     }
 
     function addInfo (data) {
-        console.log(data);
+//        console.log(data);
         var infoBox = $(document.createElement("li")).addClass("info");
 
         infoBox.text(data.message);

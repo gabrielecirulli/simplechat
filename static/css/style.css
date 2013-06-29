@@ -78,11 +78,19 @@ p.introText {
   opacity: 0;
   display: none;
 }
-.chatBlock .indicator {
+.chatBlock .messageForm:after {
+  display: block;
+  content: '';
+  clear: both;
+  width: 0;
+  height: 0;
+}
+.chatBlock .messageForm .indicator {
   margin-top: 10px;
   color: #999;
+  float: right;
 }
-.chatBlock .indicator.bad {
+.chatBlock .messageForm .indicator.bad {
   color: #c0392b;
 }
 .chatBlock .messageList {

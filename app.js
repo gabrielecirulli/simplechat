@@ -34,7 +34,7 @@ io.sockets.on("connection", function (socket) {
   socket.on("enter", function (data) {
     data.nickname = data.nickname.trim();
 
-    if (data.nickname && data.nickname.length < 35) {
+    if (data.nickname && data.nickname.length <= 35) {
       var userId = userHandler.addUser(data.nickname);
 
       if (userId) {
@@ -53,7 +53,7 @@ io.sockets.on("connection", function (socket) {
   socket.on("message", function (data) {
     data.message = data.message.trim();
 
-    if (data.message.length < 400) {
+    if (data.message.length <= 400) {
       socket.get("userId", function (err, userId) {
         if (!err) {
           var user          = userHandler.getUserById(userId),
@@ -90,5 +90,9 @@ io.sockets.on("connection", function (socket) {
 });
 
 // Start listening
-server.listen(7000);
+var port = process.env.PORT || 7000,
+    host = process.env.HOST || "0.0.0.0";
 
+server.listen(port, host, function() {
+  console.log("Listening on: " + host + ":" + port);
+});
