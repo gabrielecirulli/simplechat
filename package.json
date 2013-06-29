@@ -1,0 +1,18 @@
+{
+  "name": "chat",
+  "version": "0.0.0",
+  "description": "A simple chat",
+  "main": "app.js",
+  "author": "Gabriele Cirulli",
+  "license": "BSD",
+  "dependencies": {
+    "socket.io": "~0.9.16",
+    "express": "~3.3.1",
+    "ejs-locals": "~1.0.2",
+    "node-sass": "~0.5.2",
+    "stylus": "~0.32.1",
+    "connect-coffee-script": "~0.1.6",
+    "uglify-js": "~2.3.6",
+    "mime": "~1.2.9"
+  }
+}

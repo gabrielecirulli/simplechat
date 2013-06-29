@@ -1,0 +1,72 @@
+@import "mixins"
+
+main-color = #333
+
+@keyframes enter
+    from
+        top -100px
+        opacity 0
+    to
+        top 0
+        opacity 1
+
+
+body
+    margin 0
+    padding 0
+    font 18px/1.5 Helvetica Neue, Arial, sans-serif
+    color main-color
+    background #fafafa
+
+p
+    margin 0
+    margin-bottom 10px
+
+input
+    font inherit
+    color inherit
+    width 100%
+    display block
+    box-sizing border-box
+    padding 5px 10px
+    -webkit-appearance none
+    border 1px solid lighten(main-color, 80%)
+    background #fff
+    color lighten(main-color, 20%)
+
+input:focus
+    border 1px solid #3498db
+    outline none
+
+section.intro
+    margin-bottom 30px
+
+h1
+    margin 0
+    margin-bottom 5px
+    font-size 20px
+
+p.introText
+    margin 0
+    color: lighten(main-color, 50%)
+
+.content
+    width 400px
+    margin 0 auto
+    padding-top 50px
+
+.welcomeBlock
+    margin-top 200px
+    position relative
+    animation enter 500ms ease
+    animation-delay 600ms
+    animation-fill-mode backwards
+
+    p:first-child
+        font-weight bold
+        margin-bottom 5px
+
+    &.hidden
+        top 200px
+        opacity 0
+        transition: all 500ms cubic-bezier(0.715, 0.005, 0.790, 0.085);

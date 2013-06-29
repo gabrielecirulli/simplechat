@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  padding: 0;
+  font: 18px/1.5 Helvetica Neue, Arial, sans-serif;
+  color: #333;
+  background: #fafafa;
+}
+p {
+  margin: 0;
+  margin-bottom: 10px;
+}
+input {
+  font: inherit;
+  color: inherit;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  -webkit-appearance: none;
+  border: 1px solid #d6d6d6;
+  background: #fff;
+  color: #5c5c5c;
+}
+input:focus {
+  border: 1px solid #3498db;
+  outline: none;
+}
+section.intro {
+  margin-bottom: 30px;
+}
+h1 {
+  margin: 0;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+p.introText {
+  margin: 0;
+  color: #999;
+}
+.content {
+  width: 400px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+.welcomeBlock {
+  margin-top: 200px;
+  position: relative;
+  -webkit-animation: enter 500ms ease;
+  -moz-animation: enter 500ms ease;
+  animation: enter 500ms ease;
+  -webkit-animation-delay: 600ms;
+  -moz-animation-delay: 600ms;
+  animation-delay: 600ms;
+  -webkit-animation-fill-mode: backwards;
+  -moz-animation-fill-mode: backwards;
+  animation-fill-mode: backwards;
+}
+.welcomeBlock p:first-child {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.welcomeBlock.hidden {
+  top: 200px;
+  opacity: 0;
+  transition: all 500ms cubic-bezier(0.715, 0.005, 0.79, 0.085);
+}
+@-moz-keyframes enter {
+  0% {
+    top: -100px;
+    opacity: 0;
+  }
+
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes enter {
+  0% {
+    top: -100px;
+    opacity: 0;
+  }
+
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+@-o-keyframes enter {
+  0% {
+    top: -100px;
+    opacity: 0;
+  }
+
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+@-ms-keyframes enter {
+  0% {
+    top: -100px;
+    opacity: 0;
+  }
+
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes enter {
+  0% {
+    top: -100px;
+    opacity: 0;
+  }
+
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
