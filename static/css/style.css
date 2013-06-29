@@ -49,6 +49,9 @@ input:focus {
   border: 1px solid #3498db;
   outline: none;
 }
+input[disabled] {
+  opacity: 0.5;
+}
 section.intro {
   margin-bottom: 30px;
 }
