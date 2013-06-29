@@ -27,6 +27,9 @@ app.get("*", function (req, res) {
   res.render("index");
 });
 
+// Log level
+io.set('log level', 1);
+
 // Socket.IO
 var userHandler = new UserHandler();
 

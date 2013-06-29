@@ -65,9 +65,12 @@ input
     background #fff
     color lighten(main-color, 20%)
 
-input:focus
-    border 1px solid #3498db
-    outline none
+    &:focus
+        border 1px solid #3498db
+        outline none
+
+    &[disabled]
+        opacity 0.5
 
 section.intro
     margin-bottom 30px

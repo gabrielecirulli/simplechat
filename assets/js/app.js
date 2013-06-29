@@ -14,6 +14,8 @@ $(document).ready(function () {
     $(".nicknameForm").submit(function (e) {
         var nickname = nicknameInput.val().trim();
 
+        nicknameInput.attr("disabled", true);
+
         e.preventDefault();
         
         if (nickname) {
@@ -36,6 +38,7 @@ $(document).ready(function () {
                     }, 500);
                 } else {
 //                    console.log("REJECTED: " + data.message);
+                    nicknameInput.removeAttr("disabled");
                     nicknameForm.find(".error").remove();
                     var errorParagraph = $(document.createElement("p")).addClass("error").text(data.message);
                     nicknameForm.append(errorParagraph);
