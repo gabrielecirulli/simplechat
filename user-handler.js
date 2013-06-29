@@ -15,7 +15,8 @@ UserHandler.prototype.addUser = function (nickname) {
   if (notTaken) {
     this.users[userId] = {
       nickname: nickname,
-      color: this.generateUserColor()
+      color: this.generateUserColor(),
+      lastMessage: null
     }
 
     return userId;
@@ -45,7 +46,7 @@ UserHandler.prototype.generateUserId = function () {
 };
 
 UserHandler.prototype.generateUserColor = function () {
-  var allowedColors = ["#c0392b", "#16a085", "#27ae60", "#2980b9", "#2c3e50", "#8e44ad", "#d35400"];
+  var allowedColors = ["#c0392b", "#16a085", "#27ae60", "#2980b9", "#2c3e50", "#8e44ad", "#d35400", "#f39c12", "#34495e", "#9b59b6", "#1abc9c"];
 
   return allowedColors[Math.floor(Math.random() * allowedColors.length)];
 };

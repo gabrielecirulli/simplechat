@@ -6,6 +6,13 @@ body {
   color: #333;
   background: #fafafa;
 }
+a {
+  text-decoration: none;
+  color: #2980b9;
+}
+a:hover {
+  color: #3498db;
+}
 p {
   margin: 0;
   margin-bottom: 10px;

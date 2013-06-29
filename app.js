@@ -55,7 +55,7 @@ io.sockets.on("connection", function (socket) {
 
     if (data.message.length <= 400) {
       socket.get("userId", function (err, userId) {
-        if (!err) {
+        if (!err && userId) {
           var user          = userHandler.getUserById(userId),
               messageObject = {
                 message: data.message,
@@ -64,11 +64,19 @@ io.sockets.on("connection", function (socket) {
                 external: true
               };
 
-          socket.broadcast.emit("message", messageObject);
+          if (Date.now() - user.lastMessage < 1500) {
+            socket.emit("message response", { accepted: false, message: "Slow down! You're posting too fast." });
+          } else {
+            user.lastMessage = Date.now();
 
-          messageObject.external = false;
+            socket.broadcast.emit("message", messageObject);
 
-          socket.emit("message", messageObject);
+            messageObject.external = false;
+
+            socket.emit("message", messageObject);  
+          }
+
+          
         }
       });
     } else {
