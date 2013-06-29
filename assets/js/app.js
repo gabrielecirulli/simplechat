@@ -9,16 +9,19 @@ $(document).ready(function () {
         lenIndicator  = messageForm.find(".indicator"),
         messageInput  = messageForm.find(".messageInput"),
         maxLength     = 400,
+        connecting    = false,
         entered       = false;
 
     $(".nicknameForm").submit(function (e) {
         var nickname = nicknameInput.val().trim();
 
         nicknameInput.attr("disabled", true);
+        nicknameInput.blur();
 
         e.preventDefault();
         
-        if (nickname) {
+        if (nickname && !connecting) {
+            connecting = true;
             socket.emit("enter", { nickname: nickname });
 
             socket.on("enter response", function (data) {
@@ -28,7 +31,6 @@ $(document).ready(function () {
                     entered = true;
 
                     nicknameForm.find(".error").addClass("hidden");
-                    nicknameInput.blur();
                     welcomeBlock.addClass("hidden");
 
                     setTimeout(function () {
@@ -38,10 +40,14 @@ $(document).ready(function () {
                     }, 500);
                 } else {
 //                    console.log("REJECTED: " + data.message);
-                    nicknameInput.removeAttr("disabled");
                     nicknameForm.find(".error").remove();
                     var errorParagraph = $(document.createElement("p")).addClass("error").text(data.message);
                     nicknameForm.append(errorParagraph);
+
+                    nicknameInput.focus();
+                    nicknameInput.removeAttr("disabled");
+
+                    connecting = false;
                 }
             });
         }
