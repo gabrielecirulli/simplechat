@@ -34,34 +34,35 @@ io.sockets.on("connection", function (socket) {
   socket.on("enter", function (data) {
     data.nickname = data.nickname.trim();
 
-    if (data.nickname) {
+    if (data.nickname && data.nickname.length < 35) {
       var userId = userHandler.addUser(data.nickname);
 
       if (userId) {
         socket.set("userId", userId, function () {
+          socket.broadcast.emit("info", { message: data.nickname + " has joined." });
           socket.emit("enter response", { accepted: true });
         });   
       } else {
-        socket.emit("enter response", { accepted: false, message: "The nickname you chose is already taken." });  
+        socket.emit("enter response", { accepted: false, message: "The nickname is already taken." });  
       }
     } else {
-      socket.emit("enter response", { accepted: false, message: "The nickname you chose is invalid." });
+      socket.emit("enter response", { accepted: false, message: "The nickname is invalid (max. 35 characters)." });
     }
   });
 
   socket.on("message", function (data) {
     data.message = data.message.trim();
 
-    if (data.message) {
+    if (data.message.length < 400) {
       socket.get("userId", function (err, userId) {
         if (!err) {
           var user          = userHandler.getUserById(userId),
-            messageObject = {
-              message: data.message,
-              nickname: user.nickname,
-              color: user.color,
-              external: true
-            };
+              messageObject = {
+                message: data.message,
+                nickname: user.nickname,
+                color: user.color,
+                external: true
+              };
 
           socket.broadcast.emit("message", messageObject);
 
@@ -70,7 +71,21 @@ io.sockets.on("connection", function (socket) {
           socket.emit("message", messageObject);
         }
       });
+    } else {
+      socket.emit("message response", { accepted: false, message: "The message is too long." })
     }
+  });
+
+  socket.on("disconnect", function () {
+    socket.get("userId", function (err, userId) {
+      if (!err && userId) {
+        var user = userHandler.getUserById(userId);
+        if (user) {
+          userHandler.removeUser(userId);
+          socket.broadcast.emit("info", { message: user.nickname + " has left." });
+        }
+      }      
+    });
   });
 });
 
