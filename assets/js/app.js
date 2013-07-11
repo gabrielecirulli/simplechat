@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var socket        = io.connect("http://" + location.host),
+    var socket        = io.connect(),
         welcomeBlock  = $(".chatBody .welcomeBlock"),
         nicknameForm  = welcomeBlock.find(".nicknameForm"),
         nicknameInput = nicknameForm.find(".nicknameInput"),
@@ -43,9 +43,8 @@ $(document).ready(function () {
                     nicknameForm.find(".error").remove();
                     var errorParagraph = $(document.createElement("p")).addClass("error").text(data.message);
                     nicknameForm.append(errorParagraph);
-
-                    nicknameInput.focus();
                     nicknameInput.removeAttr("disabled");
+                    nicknameInput.focus();
 
                     connecting = false;
                 }
@@ -60,7 +59,7 @@ $(document).ready(function () {
             remaining  = maxLength - textLength;
 
         if (textLength === 0) {
-            lenIndicator.text("");
+            lenIndicator.empty();
         } else {
             lenIndicator.text(remaining);
             lenIndicator.attr("class", "indicator " + (remaining < 0 ? "bad" : ""));
@@ -75,7 +74,7 @@ $(document).ready(function () {
         if (message) {
             socket.emit("message", { message: message });
             messageInput.val("");
-            lenIndicator.text("");
+            lenIndicator.empty();
             messageForm.find(".error").remove();
         }
     });
