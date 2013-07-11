@@ -1,5 +1,7 @@
 # SimpleChat
-This is a quick app I wrote in an evening two days before my final oral exam at school. I made it to show what you can accomplish using Node and Socket.IO. Feel free to do whatever you want with it, but keep in mind the code is a bit rough, unoptimized, probably buggy and also insecure (it's quite easy to crash the server by sending the wrong data). This app was really only meant as a proof of concept, but I could expand on it in the future (*or merge your changes if you do!*).
+This is a quick app I wrote in an evening two days before my final oral exam, back in school. It was meant as an example for what you can accomplish using Node and Socket.IO. 
+
+Feel free to do whatever you want with it, but keep in mind the code is a bit rough, unoptimized, probably buggy and also insecure (it's quite easy to crash the server by sending the wrong data). This app was really only meant as a proof of concept, but I could expand on it in the future *(or merge your changes if you do!)*.
 
 ## Installing
 To install, clone this repo on your PC, `cd` into the folder and then go:
