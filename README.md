@@ -4,10 +4,8 @@ This is a quick app I wrote in an evening two days before my final oral exam, ba
 Feel free to do whatever you want with it, but keep in mind the code is a bit rough, unoptimized, probably buggy and also insecure (it's quite easy to crash the server by sending the wrong data). This app was really only meant as a proof of concept, but I could expand on it in the future *(or merge your changes if you do!)*.
 
 ## Installing
-To install, clone this repo on your PC, `cd` into the folder and then go:
-```npm install```
-That should install all of the dependencies. To start the app, run:
-```node app.js```
+To install, clone this repo on your PC, `cd` into the folder and then go: ```npm install```. That should install all of the dependencies.  
+To start the app, run: ```node app.js```
 
 ## License
 Simplified BSD:
