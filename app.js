@@ -56,7 +56,7 @@ io.sockets.on("connection", function (socket) {
   socket.on("message", function (data) {
     data.message = data.message.trim();
 
-    if (data.message.length <= 400) {
+    if (data.message.length <= 75) {
       socket.get("userId", function (err, userId) {
         if (!err && userId) {
           var user          = userHandler.getUserById(userId),
