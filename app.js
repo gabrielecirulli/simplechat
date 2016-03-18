@@ -67,7 +67,7 @@ io.sockets.on("connection", function (socket) {
                 external: true
               };
 
-          if (Date.now() - user.lastMessage < 1500) {
+          if (Date.now() - user.lastMessage < 150) {
             socket.emit("message response", { accepted: false, message: "Slow down! You're posting too fast." });
           } else {
             user.lastMessage = Date.now();
